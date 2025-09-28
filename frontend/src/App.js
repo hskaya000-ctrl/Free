@@ -2905,13 +2905,15 @@ const App = () => {
               </div>
             
               {/* Abonelikler Bölümü - İkinci sıra */}
-              <div className="space-y-4 mt-8 pt-8 border-t border-dashed">
-                <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  📱 Abonelikler
-                </h3>
-                <p className={`text-sm transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                  Aylık ödediğiniz abonelikleri kategoriler halinde yönetin
-                </p>
+              <div className="space-y-6 mt-8 pt-8 border-t border-dashed">
+                <div>
+                  <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    📱 Abonelikler
+                  </h3>
+                  <p className={`text-sm mt-1 transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Aylık ödediğiniz abonelikleri kategoriler halinde yönetin
+                  </p>
+                </div>
                 
                 {/* Abonelik Kategori Butonları */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
