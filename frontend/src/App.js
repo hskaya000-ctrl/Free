@@ -2773,7 +2773,7 @@ const App = () => {
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold">Sabit Giderler</h2>
+                  <h2 className="text-2xl font-bold">Gideler</h2>
                   <p className={`text-sm mt-1 transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     Aylık tekrarlayan giderlerinizi yönetin
                   </p>
