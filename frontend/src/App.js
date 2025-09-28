@@ -2988,9 +2988,14 @@ const App = () => {
             {/* Normal Giderler Bölümü - Alt kısım */}
             <div className="space-y-6 mt-8 pt-8 border-t border-dashed">
               <div className="flex justify-between items-center">
-                <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  📝 Gider
-                </h3>
+                <div>
+                  <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    📝 Gider
+                  </h3>
+                  <p className={`text-sm mt-1 transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Harici giderlerinizi yönetin
+                  </p>
+                </div>
               </div>
               
               {(showForm === 'expense' || (editItem && editItem.type === 'expense')) && (
