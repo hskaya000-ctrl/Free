@@ -1544,7 +1544,6 @@ const App = () => {
         'Figma'
       ],
       'yazilim': [
-        'GitHub Copilot',
         'Google Workspace',
         'JetBrains',
         'Visual Studio'
