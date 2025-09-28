@@ -2811,6 +2811,9 @@ const App = () => {
                 <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   💳 Sabit Giderler
                 </h3>
+                <p className={`text-sm mt-1 transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Aylık tekrarlayan giderlerinizi yönetin
+                </p>
                 
                 {/* Sabit Gider Kategori Butonları - 4'erli 2 satır - İstenen sıralama */}
                 <div className="grid grid-cols-4 gap-4">
