@@ -2977,7 +2977,7 @@ const App = () => {
             <div className="space-y-6 mt-8 pt-8 border-t border-dashed">
               <div className="flex justify-between items-center">
                 <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  📝 Normal Giderler
+                  📝 Gider
                 </h3>
               </div>
               
