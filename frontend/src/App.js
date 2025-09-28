@@ -2912,7 +2912,8 @@ const App = () => {
                   { key: 'yazilim', label: 'Yazılım', icon: '💻' },
                   { key: 'pazarlama', label: 'Pazarlama', icon: '📈' },
                   { key: 'eglence-icerik', label: 'Eğlence & İçerik', icon: '🎬' },
-                  { key: 'yapay-zeka', label: 'Yapay Zeka', icon: '🤖' }
+                  { key: 'yapay-zeka', label: 'Yapay Zeka', icon: '🤖' },
+                  { key: 'eklenti', label: 'Eklenti', icon: '🔧' }
                 ].map(category => {
                   // Mevcut döneme ait abonelikleri filtrele
                   const currentPeriod = `${dashboardFilter.year}-${String(dashboardFilter.month + 1).padStart(2, '0')}`;
