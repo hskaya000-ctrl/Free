@@ -210,15 +210,18 @@ frontend:
         
   - task: "Expenses section updates verification"
     implemented: true
-    working: true
+    working: false
     file: "/app/frontend/src/App.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
     needs_retesting: false
     status_history:
       - working: true
         agent: "testing"
         comment: "All requested Giderler (Expenses) section changes verified successfully: ✅ 'Sabit Giderler' changed to '🏠 Gideler' (line 2816), ✅ '📝 Normal Giderler' changed to '📝 Gider' (line 2996), ✅ '📱 Abonelikler' section exists with proper categories, ✅ 'Yapay Zeka' category contains all required services: Cursor, Claude, Elevenlabs, Uppbeat, Pixelcut, Perplexity, GitHub Copilot, Runway (lines 1572-1587), ✅ 'Tasarım' category contains Capcut (line 1542), ✅ 'Eklenti' section contains all required products: Autocut, Cutback, Firecut, LottieFiles, ProtoPie (lines 1588-1594). All services are alphabetically sorted within their categories. Subscription form functionality working correctly."
+      - working: false
+        agent: "testing"
+        comment: "New verification request completed. SUCCESSFUL CHANGES: ✅ Main header correctly shows 'Giderler' (not 'Gideler'), ✅ Section order correct: '📝 Gider', '📱 Abonelikler', '💳 Sabit Giderler' with new icon, ✅ '📝 Gider' has description 'Harici giderlerinizi yönetin', ✅ '💳 Sabit Giderler' has description 'Aylık tekrarlayan giderlerinizi yönetin', ✅ GitHub Copilot correctly removed from Yazılım category (verified in source code lines 1546-1550). CRITICAL ISSUE: ❌ Yazılım subscription form dropdown not showing expected options (Google Workspace, JetBrains, Visual Studio) - dropdown only shows 'default' option instead of the correct yazilim category options defined in source code. Form logic appears to have a bug preventing proper category-specific option display."
 
 metadata:
   created_by: "main_agent"
