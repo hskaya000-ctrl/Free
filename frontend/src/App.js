@@ -1994,6 +1994,7 @@ const App = () => {
         'pazarlama-abonelik': 'Pazarlama',
         'eglence': 'Eğlence & İçerik',
         'yapay-zeka': 'Yapay Zeka',
+        'eklenti': 'Eklenti',
         'diger': 'Diğer'
       };
       
