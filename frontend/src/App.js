@@ -2783,7 +2783,7 @@ const App = () => {
         
         {activeTab === 'expenses' && (
           <div className="space-y-6">
-            {/* Düzenli Giderler Bölümü - Üst kısım */}
+            {/* Giderler Ana Başlık */}
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
@@ -2806,7 +2806,196 @@ const App = () => {
                 </div>
               </div>
               
-              {/* Sabit Giderler Bölümü */}
+              {/* Normal Giderler Bölümü - İlk sıra */}
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      📝 Gider
+                    </h3>
+                    <p className={`text-sm mt-1 transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                      Harici giderlerinizi yönetin
+                    </p>
+                  </div>
+                </div>
+                
+                {(showForm === 'expense' || (editItem && editItem.type === 'expense')) && (
+                  <div className={`p-6 rounded-lg border transition-colors duration-200 ${
+                    darkMode 
+                      ? 'bg-gray-800 border-gray-700' 
+                      : 'bg-white border-gray-200'
+                  }`}>
+                    <ExpenseForm expense={editItem?.data} />
+                  </div>
+                )}
+                
+                <div className="grid gap-4">
+                {filterDataByPeriod(expenses, 'expense_date', expensesFilter)
+                  .sort((a, b) => new Date(b.expense_date) - new Date(a.expense_date))
+                  .map(expense => {
+                  const categories = {
+                    'ofis-giderleri': 'Ofis Giderleri',
+                    'donanim': 'Donanım',
+                    'pazarlama': 'Pazarlama',
+                    'ulasim': 'Ulaşım',
+                    'egitim': 'Eğitim',
+                    'proje-bazli': 'Proje Bazlı Harcamalar',
+                    'yemek': 'Yemek',
+                    'diger': 'Diğer'
+                  };
+                  
+                  return (
+                    <div key={expense.id} className={`p-6 rounded-lg border transition-colors duration-200 ${
+                      darkMode 
+                        ? 'bg-red-900/20 border-red-700' 
+                        : 'bg-red-50 border-red-200'
+                    }`}>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className={`text-sm font-medium px-3 py-1 rounded-full transition-colors duration-200 ${
+                              darkMode 
+                                ? 'bg-red-800 text-red-200' 
+                                : 'bg-red-100 text-red-800'
+                            }`}>
+                              📅 {expense.expense_date}
+                            </span>
+                          </div>
+                          <h3 className={`text-lg font-semibold transition-colors duration-200 ${
+                            darkMode ? 'text-red-200' : 'text-red-900'
+                          }`}>
+                            {categories[expense.category] || expense.category}
+                          </h3>
+                          <p className={`transition-colors duration-200 ${
+                            darkMode ? 'text-red-300' : 'text-red-700'
+                          }`}>
+                            {expense.description || 'Açıklama yok'}
+                          </p>
+                        </div>
+                        <div className="text-right flex items-center gap-2">
+                          <div>
+                            <p className={`text-xl font-bold transition-colors duration-200 ${
+                              darkMode ? 'text-red-300' : 'text-red-700'
+                            }`}>
+                              ₺{expense.amount.toLocaleString('tr-TR')}
+                            </p>
+                          </div>
+                          <StandardButton
+                            onClick={() => setEditItem({ type: 'expense', data: expense })}
+                            variant="secondary"
+                            size="sm"
+                            className="px-3 py-1"
+                          >
+                            ✏️
+                          </StandardButton>
+                          <StandardButton
+                            onClick={() => deleteExpense(expense.id)}
+                            variant="danger"
+                            size="sm"
+                            className="px-3 py-1"
+                          >
+                            🗑️
+                          </StandardButton>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                </div>
+              </div>
+            
+              {/* Abonelikler Bölümü - İkinci sıra */}
+              <div className="space-y-4 mt-8 pt-8 border-t border-dashed">
+                <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  📱 Abonelikler
+                </h3>
+                <p className={`text-sm transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  Aylık ödediğiniz abonelikleri kategoriler halinde yönetin
+                </p>
+                
+                {/* Abonelik Kategori Butonları */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    { key: 'tasarim', label: 'Tasarım', icon: '🎨' },
+                    { key: 'yazilim', label: 'Yazılım', icon: '💻' },
+                    { key: 'pazarlama', label: 'Pazarlama', icon: '📈' },
+                    { key: 'eglence-icerik', label: 'Eğlence & İçerik', icon: '🎬' },
+                    { key: 'yapay-zeka', label: 'Yapay Zeka', icon: '🤖' },
+                    { key: 'eklenti', label: 'Eklenti', icon: '🔧' }
+                  ].map(category => {
+                    // Mevcut döneme ait abonelikleri filtrele
+                    const currentPeriod = `${dashboardFilter.year}-${String(dashboardFilter.month + 1).padStart(2, '0')}`;
+                    const categorySubscriptions = subscriptions.filter(subscription => 
+                      subscription.category === category.key && subscription.period === currentPeriod
+                    );
+                    
+                    return (
+                      <div key={category.key} className={`p-4 rounded-lg border transition-colors duration-200 ${
+                        darkMode 
+                          ? 'bg-gray-800 border-gray-700' 
+                          : 'bg-white border-gray-200'
+                      }`}>
+                        <div className="text-center mb-3">
+                          <div className="text-2xl mb-1">{category.icon}</div>
+                          <h4 className={`text-sm font-medium transition-colors duration-200 ${
+                            darkMode ? 'text-white' : 'text-gray-900'
+                          }`}>{category.label}</h4>
+                        </div>
+                        
+                        {/* Mevcut Abonelikler */}
+                        <div className="space-y-2 mb-3">
+                          {categorySubscriptions.map((subscription, index) => (
+                            <div key={subscription.id} className={`p-2 rounded text-xs transition-colors duration-200 ${
+                              darkMode 
+                                ? 'bg-gray-700 text-gray-300' 
+                                : 'bg-gray-50 text-gray-700'
+                            }`}>
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <div className="font-medium">{subscription.subcategoryLabel || subscription.description}</div>
+                                  <div className="text-green-600 font-semibold">₺{subscription.amount.toLocaleString('tr-TR')}</div>
+                                </div>
+                                <button
+                                  onClick={() => deleteSubscription(subscription.id)}
+                                  className="text-red-500 hover:text-red-700 ml-2"
+                                  title="Sil"
+                                >
+                                  ✕
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Yeni Abonelik Ekleme */}
+                        <button
+                          onClick={() => setShowForm(`subscription-${category.key}`)}
+                          className={`w-full py-2 px-3 text-xs rounded border-2 border-dashed transition-colors duration-200 ${
+                            darkMode 
+                              ? 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300' 
+                              : 'border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-700'
+                          }`}
+                        >
+                          + Abonelik Ekle
+                        </button>
+                        
+                        {/* Form */}
+                        {showForm === `subscription-${category.key}` && (
+                          <div className="mt-3 pt-3 border-t">
+                            <SubscriptionForm 
+                              category={category.key}
+                              categoryLabel={category.label}
+                              onClose={() => setShowForm(null)}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              {/* Sabit Giderler Bölümü - Üçüncü sıra */}
               <div className="space-y-4">
                 <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   💳 Sabit Giderler
