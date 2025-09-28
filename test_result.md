@@ -227,13 +227,9 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "React app with Turkish interface"
-    - "localStorage offline functionality"
-    - "Dashboard with financial summary"
-    - "Forms for data entry"
+  current_focus: []
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
