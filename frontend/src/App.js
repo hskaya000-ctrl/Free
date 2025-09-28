@@ -2789,9 +2789,6 @@ const App = () => {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                   <h2 className="text-2xl font-bold">Giderler</h2>
-                  <p className={`text-sm mt-1 transition-colors duration-200 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                    Aylık tekrarlayan giderlerinizi yönetin
-                  </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
                   {/* Dönem Filtresi */}
