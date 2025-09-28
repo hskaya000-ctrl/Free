@@ -1537,46 +1537,60 @@ const App = () => {
     const subcategoryOptions = {
       'tasarim': [
         'Adobe Creative Cloud',
-        'Figma',
+        'Autodesk (3ds Max, Maya)',
         'Canva Pro',
+        'Capcut',
         'Cinema 4D',
-        'Autodesk (3ds Max, Maya)'
+        'Figma'
       ],
       'yazilim': [
         'GitHub Copilot',
-        'Visual Studio',
+        'Google Workspace',
         'JetBrains',
-        'Google Workspace'
+        'Visual Studio'
       ],
       'pazarlama': [
-        'Semrush',
         'Ahrefs',
+        'Buffer / Hootsuite',
         'HubSpot',
         'Mailchimp',
-        'Buffer / Hootsuite'
+        'Semrush'
       ],
       'eglence-icerik': [
-        'Spotify',
-        'Apple Music',
-        'YouTube',
-        'Netflix',
-        'Disney+',
         'Amazon Prime',
-        'HBO Max',
+        'Apple Music',
         'BluTV',
+        'Disney+',
         'Exxen',
         'Gain',
-        'MUBI'
+        'HBO Max',
+        'MUBI',
+        'Netflix',
+        'Spotify',
+        'YouTube'
       ],
       'yapay-zeka': [
         'ChatGPT',
-        'MidJourney',
-        'Stable Diffusion',
-        'Runway Gen-2',
-        'Jasper AI',
+        'Claude',
         'Copy.ai',
-        'Perplexity Pro',
-        'Descript'
+        'Cursor',
+        'Descript',
+        'Elevenlabs',
+        'GitHub Copilot',
+        'Jasper AI',
+        'MidJourney',
+        'Perplexity',
+        'Pixelcut',
+        'Runway',
+        'Stable Diffusion',
+        'Uppbeat'
+      ],
+      'eklenti': [
+        'Autocut',
+        'Cutback',
+        'Firecut',
+        'LottieFiles',
+        'ProtoPie'
       ]
     };
 
