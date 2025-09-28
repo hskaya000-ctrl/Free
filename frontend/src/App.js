@@ -2813,7 +2813,7 @@ const App = () => {
               {/* Sabit Giderler Bölümü */}
               <div className="space-y-4">
                 <h3 className={`text-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  🏠 Gideler
+                  💳 Sabit Giderler
                 </h3>
                 
                 {/* Sabit Gider Kategori Butonları - 4'erli 2 satır - İstenen sıralama */}
